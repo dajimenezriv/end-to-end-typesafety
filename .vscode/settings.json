@@ -1,0 +1,21 @@
+{
+  "codeium.enableCodeLens": false,
+  "editor.codeLens": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.guides.indentation": false,
+  "editor.insertSpaces": true,
+  "editor.linkedEditing": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "explorer.compactFolders": false,
+  "explorer.sortOrder": "filesFirst",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/package-lock.json": true
+  },
+  "typescript.referencesCodeLens.enabled": true,
+  "workbench.editor.enablePreview": true // Unpin diff files (WorkingTree)
+}
