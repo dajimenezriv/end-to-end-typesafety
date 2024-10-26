@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { PORT } from '@/constants';
 
 import { listen } from '../trpc/router';

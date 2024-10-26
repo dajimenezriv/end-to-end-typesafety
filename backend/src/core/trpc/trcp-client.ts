@@ -26,3 +26,16 @@ export const trpc = createTRPCProxyClient<AppRouter>({
     }),
   ],
 });
+
+export const englishTrpc = createTRPCProxyClient<AppRouter>({
+  links: [
+    httpBatchLink({
+      url: URL,
+      headers() {
+        return {
+          'Accept-Language': 'en',
+        };
+      },
+    }),
+  ],
+});

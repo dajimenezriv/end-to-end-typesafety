@@ -18,9 +18,10 @@ describe('complex-input.service', () => {
     const output = await trpc.backendForFrontend.pages.feature.complexInput.query(input);
 
     // Then
+    expect(input.date.toISOString()).toBe('2024-01-01T01:01:01.000Z');
     expect(output).toStrictEqual({
       ...input,
-      date: '2024-01-01T00:01:01.000Z',
+      date: '2024-01-01T01:01:01.000Z',
     });
   });
 });

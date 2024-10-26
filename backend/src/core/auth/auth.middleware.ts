@@ -1,8 +1,8 @@
 import { TRPCError } from '@trpc/server';
 
-import { publicProcedure } from './trpc-server';
+import { middleware } from '../trpc/trpc-server';
 
-export const protectedProcedure = publicProcedure.use(({ ctx, next }) => {
+export const authMiddleware = middleware(({ ctx, next }) => {
   if (ctx.token !== 'valid_token') {
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
