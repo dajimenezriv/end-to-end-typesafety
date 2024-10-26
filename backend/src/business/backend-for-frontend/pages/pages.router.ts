@@ -1,7 +1,7 @@
 import { router } from '@/core/trpc/trpc-server';
 
-import { featureRouter } from './feature/out/feature.router';
+import { pageRouter } from './page/out/page.router';
 
 export const pagesRouter = router({
-  feature: featureRouter,
+  page: pageRouter,
 });

@@ -6,7 +6,7 @@ import { HelloService } from './hello.service';
 import { ProtectedService } from './protected-service';
 import { TranslationsService } from './translations.service';
 
-export const featureRouter = router({
+export const pageRouter = router({
   hello: publicProcedure
     .input(HelloService.input)
     .input(HelloService.input)

@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "nodemon",
     "tsc": "tsc --noEmit",
+    "build": "tsc",
     "lint": "eslint src/**/*.ts",
     "========== Testing ==========": "",
     "test": "vitest run",
