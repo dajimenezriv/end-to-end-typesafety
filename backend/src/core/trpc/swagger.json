@@ -6,13 +6,14 @@
   },
   "servers": [
     {
-      "url": "http://localhost:2022/"
+      "url": "http://localhost:2022/trpc"
     }
   ],
   "paths": {
-    "/hello": {
+    "/bff.pages.page.hello": {
       "get": {
         "operationId": "bff-pages-page-hello",
+        "summary": "Hello",
         "parameters": [
           {
             "name": "name",
@@ -20,7 +21,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "Dani"
           }
         ],
         "responses": {
@@ -29,7 +31,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "output": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "output"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "output": "Hello, Dani!"
                 }
               }
             }
@@ -40,9 +54,14 @@
         }
       }
     },
-    "/protected": {
+    "/bff.pages.page.protected": {
       "get": {
         "operationId": "bff-pages-page-protected",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -61,7 +80,7 @@
         }
       }
     },
-    "/translations": {
+    "/bff.pages.page.translations": {
       "get": {
         "operationId": "bff-pages-page-translations",
         "parameters": [
@@ -100,7 +119,7 @@
         }
       }
     },
-    "/mutation": {
+    "/bff.pages.page.mutation": {
       "post": {
         "operationId": "bff-pages-page-mutation",
         "requestBody": {
@@ -215,21 +234,9 @@
         }
       }
     },
-    "/delete": {
+    "/bff.pages.page.delete": {
       "post": {
         "operationId": "bff-pages-page-delete",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {},
-                "additionalProperties": false
-              }
-            }
-          }
-        },
         "parameters": [],
         "responses": {
           "200": {

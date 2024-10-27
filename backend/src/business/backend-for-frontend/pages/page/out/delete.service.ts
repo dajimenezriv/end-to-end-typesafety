@@ -7,7 +7,7 @@ export class DeleteService {
 }
 
 export namespace DeleteService {
-  export const input = z.object({});
+  export const input = z.void();
   export const output = z.string();
   export type TInput = z.infer<typeof input>;
   export type TOutput = z.infer<typeof output>;

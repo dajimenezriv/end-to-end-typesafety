@@ -15,7 +15,7 @@ export const app = express();
 const openApiDocument = generateOpenApiDocument(appRouter, {
   title: 'tRPC',
   version: '1.0.0',
-  baseUrl: BASE_URL,
+  baseUrl: `${BASE_URL}trpc`,
 });
 
 app.use(
