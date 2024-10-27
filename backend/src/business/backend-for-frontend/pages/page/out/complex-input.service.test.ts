@@ -15,7 +15,7 @@ const input: ComplexInputService.TInput = {
 describe('complex-input.service', () => {
   it('Complex input', async () => {
     // When
-    const output = await trpc.backendForFrontend.pages.page.complexInput.query(input);
+    const output = await trpc.bff.pages.page.complexInput.query(input);
 
     // Then
     expect(input.date.toISOString()).toBe('2024-01-01T01:01:01.000Z');

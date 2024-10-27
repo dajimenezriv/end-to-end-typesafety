@@ -1,4 +1,4 @@
-import cls from 'cls-hooked';
+import * as cls from 'cls-hooked';
 
 import { TLanguage } from './i18n.types';
 

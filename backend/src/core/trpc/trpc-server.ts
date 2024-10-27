@@ -1,5 +1,6 @@
 import { initTRPC } from '@trpc/server';
 import { CreateHTTPContextOptions } from '@trpc/server/adapters/standalone';
+import { OpenApiMeta } from 'trpc-openapi';
 
 export const createContext = ({ req }: CreateHTTPContextOptions) => {
   const language = req?.headers?.['accept-language'];
@@ -8,7 +9,7 @@ export const createContext = ({ req }: CreateHTTPContextOptions) => {
 };
 
 type Context = Awaited<ReturnType<typeof createContext>>;
-const t = initTRPC.context<Context>().create();
+const t = initTRPC.context<Context>().meta<OpenApiMeta>().create();
 
 export const router = t.router;
 export const procedure = t.procedure;

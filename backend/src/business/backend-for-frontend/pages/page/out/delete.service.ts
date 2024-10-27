@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-export class ProtectedService {
-  execute(token: string): ProtectedService.TOutput {
-    return token;
+export class DeleteService {
+  execute(): DeleteService.TOutput {
+    return 'Hello';
   }
 }
 
-export namespace ProtectedService {
+export namespace DeleteService {
   export const input = z.object({});
   export const output = z.string();
   export type TInput = z.infer<typeof input>;

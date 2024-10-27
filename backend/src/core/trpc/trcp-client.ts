@@ -1,15 +1,13 @@
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 
-import { PORT } from '@/constants';
+import { BASE_URL } from '@/constants';
 
 import { AppRouter } from './router';
-
-const URL = `http://localhost:${PORT}/`;
 
 export const publicTrpc = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: URL,
+      url: BASE_URL,
     }),
   ],
 });
@@ -17,7 +15,7 @@ export const publicTrpc = createTRPCProxyClient<AppRouter>({
 export const trpc = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: URL,
+      url: BASE_URL,
       headers() {
         return {
           Authorization: `Bearer valid_token`,
@@ -30,7 +28,7 @@ export const trpc = createTRPCProxyClient<AppRouter>({
 export const englishTrpc = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: URL,
+      url: BASE_URL,
       headers() {
         return {
           'Accept-Language': 'en',

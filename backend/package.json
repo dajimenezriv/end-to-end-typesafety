@@ -8,7 +8,7 @@
     "lint": "eslint src/**/*.ts",
     "========== Testing ==========": "",
     "test": "vitest run",
-    "test:watch": "vitest --reporter=basic --disable-console-intercept",
+    "test:watch": "vitest",
     "test:watch:one": "npm run test:watch -- related x"
   },
   "dependencies": {

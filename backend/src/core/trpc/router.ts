@@ -1,16 +1,9 @@
-import { createHTTPServer } from '@trpc/server/adapters/standalone';
+import { bffRouter } from '@/business/backend-for-frontend/backend-for-frontend.router';
 
-import { backendForFrontendRouter } from '@/business/backend-for-frontend/backend-for-frontend.router';
+import { router } from './trpc-server';
 
-import { createContext, router } from './trpc-server';
-
-const appRouter = router({
-  backendForFrontend: backendForFrontendRouter,
+export const appRouter = router({
+  bff: bffRouter,
 });
 
 export type AppRouter = typeof appRouter;
-
-export const { listen, server } = createHTTPServer({
-  router: appRouter,
-  createContext,
-});

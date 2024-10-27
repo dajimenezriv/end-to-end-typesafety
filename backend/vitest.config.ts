@@ -3,8 +3,11 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     globalSetup: './src/core/tests/global-setup.ts',
+    // setupFiles: './src/core/tests/setup-files.ts',
     root: './',
     include: ['src/**/*.test.ts'],
+    reporters: ['basic'],
+    disableConsoleIntercept: true,
     poolOptions: {
       threads: {
         singleThread: true,

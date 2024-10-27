@@ -1,4 +1,6 @@
-import { PORT } from './constants';
-import { listen } from './core/trpc/router';
+import { PORT, BASE_URL } from './constants';
+import { app } from './core/trpc/express-server';
 
-listen(PORT);
+app.listen(PORT, () => {
+  console.log(`tRPC server running on ${BASE_URL}`);
+});
