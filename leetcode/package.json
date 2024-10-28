@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon",
+    "tsc": "tsc --noEmit",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "========== Testing ==========": "",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:watch:one": "npm run test:watch -- related x"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.8.1",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.6.3"
+  }
+}
