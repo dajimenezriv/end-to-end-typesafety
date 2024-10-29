@@ -1,32 +1,24 @@
-const hashMap = {
-  ')': '(',
-  '}': '{',
-  ']': '[',
-};
+function NumberAddition(str: string) {
+  let res = 0;
+  let last = '';
 
-function isValid(s: string): boolean {
-  let stack: string[] = [];
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    const value = Number(char);
+    const isNumber = !isNaN(value);
 
-  for (let i = 0; i < s.length; i++) {
-    const char = s[i];
-    const isClose = char in hashMap;
-
-    if (isClose) {
-      const open = hashMap[char as keyof typeof hashMap];
-      if (stack[stack.length - 1] === open) {
-        stack.pop();
-      } else {
-        return false;
-      }
-    } else {
-      stack.push(char);
+    if (char !== ' ' && isNumber) {
+      last += char;
+    } else if (last) {
+      res += Number(last);
+      last = '';
     }
   }
 
-  return stack.length === 0;
+  if (last) res += Number(last);
+
+  return res;
 }
 
-console.log(isValid('()'));
-console.log(isValid('()[]{}'));
-console.log(isValid('(]'));
-console.log(isValid('([])'));
+// keep this function call here
+console.log(NumberAddition('75Number9'));

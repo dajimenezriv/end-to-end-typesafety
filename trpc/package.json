@@ -7,9 +7,10 @@
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
     "========== Testing ==========": "",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:watch:one": "npm run test:watch -- related x"
+    "test": "vitest",
+    "test:one": "npm run test -- related x",
+    "test:once": "npm run test -- run",
+    "test:coverage": "npm run test:once -- --coverage"
   },
   "dependencies": {
     "@trpc/client": "^10.45.2",
@@ -27,6 +28,7 @@
     "@types/node": "^22.8.0",
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@vitest/coverage-v8": "^2.1.4",
     "dotenv": "^16.4.5",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",

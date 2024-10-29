@@ -8,6 +8,9 @@ export default defineConfig({
     include: ['src/**/*.test.ts'],
     reporters: ['basic'],
     disableConsoleIntercept: true,
+    coverage: {
+      provider: "v8"
+    },
     poolOptions: {
       threads: {
         singleThread: true,
