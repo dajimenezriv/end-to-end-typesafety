@@ -28,15 +28,20 @@
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
+    "@analogjs/platform": "^1.9.1",
+    "@analogjs/vite-plugin-angular": "^1.7.0",
+    "@analogjs/vitest-angular": "^1.7.0",
     "@angular-devkit/build-angular": "^18.2.11",
     "@angular/cli": "^18.2.11",
     "@angular/compiler-cli": "^18.2.0",
     "@ng-icons/lucide": "^29.6.1",
+    "@nx/vite": "~19.1.0",
     "@spartan-ng/cli": "^0.0.1-alpha.366",
     "@testing-library/angular": "^17.3.1",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.20",
     "jasmine-core": "~5.2.0",
+    "jsdom": "^22.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
@@ -46,6 +51,8 @@
     "tailwind-merge": "^2.2.0",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.6",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^1.3.1"
   }
 }

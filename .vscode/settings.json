@@ -11,6 +11,7 @@
   "explorer.sortOrder": "filesFirst",
   "files.eol": "\n",
   "files.exclude": {
+    "**/.angular": true,
     "**/node_modules": true
   },
   "search.exclude": {
