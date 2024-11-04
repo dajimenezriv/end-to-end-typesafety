@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
@@ -16,11 +15,12 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./dist",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "tsoa": ["node_modules/tsoa/dist"],
+      "tsoa/": ["node_modules/tsoa/dist/"]
     },
     "removeComments": true,
     "skipLibCheck": true,

@@ -1,0 +1,56 @@
+{
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "info": {
+    "contact": {},
+    "title": "backend",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/frontend/common/auth": {
+      "get": {
+        "operationId": "GetAuthenticatedUser",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "format": "double",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Ok"
+          }
+        },
+        "security": [],
+        "tags": [
+          "frontend/common/auth"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Localhost server",
+      "url": "http://localhost:8080"
+    }
+  ]
+}

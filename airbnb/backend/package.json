@@ -6,6 +6,7 @@
     "tsc": "tsc --noEmit",
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
+    "tsoa": "tsoa spec-and-routes && jsonsort src/core/api/swagger.json --arrays",
     "========== Testing ==========": "",
     "test": "vitest",
     "test:one": "npm run test -- related x",
@@ -13,12 +14,21 @@
     "test:coverage": "npm run test:once -- --coverage"
   },
   "dependencies": {
-    "express": "^4.21.1"
+    "@prisma/client": "^5.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "express-openapi": "^12.1.3",
+    "reflect-metadata": "^0.2.2",
+    "swagger-ui-express": "^5.0.1",
+    "tsoa": "^6.5.1",
+    "tsyringe": "^4.8.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.8.0",
+    "@types/swagger-ui-express": "^4.1.7",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "@vitest/coverage-v8": "^2.1.4",
     "dotenv": "^16.4.5",
@@ -27,9 +37,12 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-unicorn": "^56.0.0",
+    "json-sort-cli": "^4.0.4",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
+    "prisma": "^5.21.1",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }

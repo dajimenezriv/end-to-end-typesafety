@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "controllerPathGlobs": ["src/**/*controller.ts"],
+  "entryFile": "./src/main.ts",
+  "noImplicitAdditionalProperties": "silently-remove-extras",
+  "routes": {
+    "routesDir": "src/core/api"
+  },
+  "spec": {
+    "outputDirectory": "src/core/api",
+    "spec": {
+      "servers": [
+        {
+          "description": "Localhost server",
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "specVersion": 3
+  }
+}
