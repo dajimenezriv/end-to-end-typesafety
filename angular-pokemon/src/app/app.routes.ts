@@ -15,12 +15,7 @@ export const routes: Routes = [
     title: 'Pokemon Details',
   },
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/list?page=1',
-  },
-  {
     path: '**',
-    redirectTo: '/list?page=1',
+    redirectTo: '/list',
   },
 ];

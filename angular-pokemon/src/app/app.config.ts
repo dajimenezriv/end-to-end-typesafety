@@ -6,5 +6,18 @@ import { provideAngularQuery, QueryClient } from '@tanstack/angular-query-experi
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideHttpClient(), provideAngularQuery(new QueryClient()), provideRouter(routes, withComponentInputBinding())],
+  providers: [
+    provideHttpClient(),
+    provideAngularQuery(
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: false,
+            refetchOnWindowFocus: true,
+          },
+        },
+      }),
+    ),
+    provideRouter(routes, withComponentInputBinding()),
+  ],
 };

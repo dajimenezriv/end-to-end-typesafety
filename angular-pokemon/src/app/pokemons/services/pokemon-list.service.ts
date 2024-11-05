@@ -17,10 +17,6 @@ export class PokemonListService {
 
   currentPage = signal(0);
 
-  getPage(pokemonId: number): number {
-    return Math.ceil(pokemonId / PAGE_SIZE);
-  }
-
   getPokemons() {
     const pokemonIds = [...Array(PAGE_SIZE).keys()].map((n) => PAGE_SIZE * this.currentPage() + (n + 1));
     return Promise.all(pokemonIds.map((id) => this.get(id)));

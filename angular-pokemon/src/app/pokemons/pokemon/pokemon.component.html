@@ -1,6 +1,6 @@
 <div class="content">
-  @if (pokemonQuery.isLoading()) {<p>Loading....</p>}
-  @if (pokemonQuery.isError()) {<p>Failed to load dependencies</p>}
+  @if (pokemonQuery.isLoading()) {<p>Loading...</p>}
+  @if (pokemonQuery.isError()) {<p>Failed to load pokemon</p>}
   @if (pokemonQuery.data(); as pokemonDetails) {
   <app-pokemon-physical [pokemonDetails]="pokemonDetails" />
   <app-pokemon-statistics [statistics]="pokemonDetails.stats" />
