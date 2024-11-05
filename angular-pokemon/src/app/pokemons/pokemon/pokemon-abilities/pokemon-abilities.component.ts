@@ -5,35 +5,8 @@ import { TAbility } from '../../interfaces/pokemon-abilities.interface';
 @Component({
   selector: 'app-pokemon-abilities',
   standalone: true,
-  template: `
-    <p class="heading">Abilities</p>
-    @for (ability of abilities; track ability.name; let idx = $index) {
-      <div class="abilities">
-        <label for="ability_name">
-          <span>{{ idx + 1 }}. Name: </span><span id="ability_name" name="ability_name">{{ ability.name }}</span>
-        </label>
-        <label for="ability_isHidden">
-          <span>Effort: </span><span id="ability_isHidden" name="ability_isHidden">{{ ability.isHidden ? 'Yes' : 'No' }}</span>
-        </label>
-      </div>
-    } @empty {
-      <p>No Ability</p>
-    }
-  `,
-  styles: [
-    `
-      .abilities {
-        width: 60%;
-        display: flex;
-      }
-
-      .abilities > label {
-        flex-basis: 33.33%;
-        flex-grow: 1;
-        flex-shrink: 1;
-      }
-    `,
-  ],
+  templateUrl: './pokemon-abilities.component.html',
+  styleUrl: './pokemon-abilities.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonAbilitiesComponent {

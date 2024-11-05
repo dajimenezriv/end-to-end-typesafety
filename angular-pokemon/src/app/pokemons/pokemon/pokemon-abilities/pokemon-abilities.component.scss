@@ -1,0 +1,10 @@
+.abilities {
+  width: 60%;
+  display: flex;
+}
+
+.abilities > label {
+  flex-basis: 33.33%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
