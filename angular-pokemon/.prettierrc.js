@@ -2,7 +2,7 @@ module.exports = {
   arrowParens: 'always',
   bracketSameLine: true,
   bracketSpacing: true,
-  endOfLine: 'crlf',
+  endOfLine: 'lf',
   importOrder: ['^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
   importOrderParserPlugins: ['typescript', 'decorators-legacy'],

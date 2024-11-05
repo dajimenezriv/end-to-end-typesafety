@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'anuglar-pokemon' title`, () => {
+  it(`should have the 'ng-new-control-flow-demo' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('anuglar-pokemon');
+    expect(app.title).toEqual('ng-new-control-flow-demo');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, anuglar-pokemon');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('ng-new-control-flow-demo app is running!');
   });
 });
