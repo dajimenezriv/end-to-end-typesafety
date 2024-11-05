@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="image">
+    <img [src]="pokemon.frontShiny" width="80" height="80" alt="pokemon image" />
+  </div>
+  <div class="details">
+    <label for="id">
+      <span>Id: </span><span id="id" name="id">{{ pokemon.id }}</span>
+    </label>
+    <label for="name">
+      <span>Name: </span>
+      <a [routerLink]="['pokemon', pokemon.id]" [state]="{ pokemon }">
+        <span id="name" name="name">
+          {{ pokemon.name}}
+        </span>
+      </a>
+    </label>
+    <label for="weight">
+      <span>Weight: </span><span id="weight" name="weight">{{ pokemon.weight }}</span>
+    </label>
+    <label for="height">
+      <span>Height: </span><span id="height" name="height">{{ pokemon.height }}</span>
+    </label>
+  </div>
+</div>

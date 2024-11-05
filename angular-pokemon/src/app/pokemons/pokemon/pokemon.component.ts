@@ -14,50 +14,8 @@ import { PokemonDetailsService } from './services/pokemon-details.service';
   selector: 'app-pokemon',
   standalone: true,
   imports: [AsyncPipe, PokemonStatisticsComponent, PokemonAbilitiesComponent, PokemonPhysicalComponent],
-  template: `
-    <div class="content">
-      @if (pokemonDetails$ | async; as pokemonDetails) {
-        @defer {
-          <app-pokemon-physical [pokemonDetails]="pokemonDetails" />
-          <app-pokemon-statistics [statistics]="pokemonDetails.stats" />
-          <app-pokemon-abilities [abilities]="pokemonDetails.abilities" />
-        } @loading (minimum 200ms) {
-          <p>Loading....</p>
-        } @placeholder (minimum 500ms) {
-          <p>Placeholder of Pokemon</p>
-        } @error {
-          <p>Failed to load dependencies</p>
-        }
-      }
-    </div>
-    <div class="button-bar">
-      <button (click)="backToPage()">Go back</button>
-    </div>
-  `,
-  styles: [
-    `
-      .content {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .button-bar {
-        padding: 1rem;
-      }
-
-      button {
-        padding: 0.25rem;
-        border-radius: 4px;
-      }
-
-      app-pokemon-statistics,
-      app-pokemon-physical,
-      app-pokemon-abilities {
-        margin-bottom: 0.5rem;
-      }
-    `,
-  ],
+  templateUrl: './pokemon.component.html',
+  styleUrl: './pokemon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonComponent implements OnInit {

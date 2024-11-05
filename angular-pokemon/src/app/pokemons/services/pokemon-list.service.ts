@@ -23,7 +23,6 @@ export class PokemonListService {
 
   getPokemons() {
     const pokemonIds = [...Array(PAGE_SIZE).keys()].map((n) => PAGE_SIZE * this.currentPage() + (n + 1));
-
     return Promise.all(pokemonIds.map((id) => this.get(id)));
   }
 
