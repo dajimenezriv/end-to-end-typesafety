@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
-import { EMPTY, Observable, catchError, forkJoin, map, retry } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
 
 import { TAbility } from '../interfaces/pokemon-abilities.interface';
 import { TStatistics } from '../interfaces/pokemon-statistics.interface';
@@ -21,10 +21,10 @@ export class PokemonListService {
     return Math.ceil(pokemonId / PAGE_SIZE);
   }
 
-  getPokemons(): Observable<Array<TDisplayPokemon>> {
+  getPokemons() {
     const pokemonIds = [...Array(PAGE_SIZE).keys()].map((n) => PAGE_SIZE * this.currentPage() + (n + 1));
 
-    return forkJoin(pokemonIds.map((id) => this.get(id)));
+    return Promise.all(pokemonIds.map((id) => this.get(id)));
   }
 
   private pokemonTransformer(pokemon: TPokemon): TDisplayPokemon {
@@ -43,14 +43,9 @@ export class PokemonListService {
     };
   }
 
-  private get(id: number): Observable<TDisplayPokemon> {
-    return this.httpClient.get<TPokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`).pipe(
-      map((pokemon) => this.pokemonTransformer(pokemon)),
-      retry(3),
-      catchError((err) => {
-        console.error(err);
-        return EMPTY;
-      }),
+  private get(id: number) {
+    return lastValueFrom(
+      this.httpClient.get<TPokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`).pipe(map((pokemon) => this.pokemonTransformer(pokemon))),
     );
   }
 }

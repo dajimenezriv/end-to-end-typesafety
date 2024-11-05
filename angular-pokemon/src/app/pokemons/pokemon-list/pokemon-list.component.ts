@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, inject, numberAttribute } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { injectQueryClient } from '@tanstack/angular-query-experimental';
-import { switchMap } from 'rxjs';
+import { Component, Input, inject, numberAttribute } from '@angular/core';
+import { injectQuery, injectQueryClient } from '@tanstack/angular-query-experimental';
 
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonPaginationComponent } from '../pokemon-pagination/pokemon-pagination.component';
@@ -13,10 +11,9 @@ import { PokemonListService } from '../services/pokemon-list.service';
   imports: [PokemonCardComponent, PokemonPaginationComponent],
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonListComponent {
-  private readonly pokemonLisService = inject(PokemonListService);
+  private readonly pokemonListService = inject(PokemonListService);
   private readonly queryClient = injectQueryClient();
 
   page = 1;
@@ -25,8 +22,13 @@ export class PokemonListComponent {
   set _page(value: number) {
     this.page = value;
     this.currentPage.set(this.page - 1);
+    this.queryClient.invalidateQueries({ queryKey: ['pokemons', this._page] });
   }
 
-  currentPage = this.pokemonLisService.currentPage;
-  pokemons = toSignal(toObservable(this.currentPage).pipe(switchMap(() => this.pokemonLisService.getPokemons())), { initialValue: [] });
+  currentPage = this.pokemonListService.currentPage;
+
+  pokemonQuery = injectQuery(() => ({
+    queryKey: ['pokemons', this._page],
+    queryFn: () => this.pokemonListService.getPokemons(),
+  }));
 }
