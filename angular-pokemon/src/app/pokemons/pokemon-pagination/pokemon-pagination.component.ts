@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+
 import { PokemonListService } from '../services/pokemon-list.service';
 
 @Component({
@@ -11,33 +12,36 @@ import { PokemonListService } from '../services/pokemon-list.service';
       <ul>
         @for (page of pages; track page) {
           <li>
-            <a [routerLink]="['../list']" [queryParams]="{ page: page + 1 }" (click)="currentPage.set(page)" 
-              routerLinkActive="active">Page {{ page + 1 }}</a>
+            <a [routerLink]="['../list']" [queryParams]="{ page: page + 1 }" (click)="currentPage.set(page)" routerLinkActive="active"
+              >Page {{ page + 1 }}</a
+            >
           </li>
         }
       </ul>
     </div>
   `,
-  styles: [`
-  ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-  }
+  styles: [
+    `
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+      }
 
-  ul li {
-    margin-right: 0.5rem;
-  }
+      ul li {
+        margin-right: 0.5rem;
+      }
 
-  .pagination-bar {
-    margin: 1rem 0;
-  }
+      .pagination-bar {
+        margin: 1rem 0;
+      }
 
-  .active {
-    color: green;
-  }
-`],
+      .active {
+        color: green;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonPaginationComponent {

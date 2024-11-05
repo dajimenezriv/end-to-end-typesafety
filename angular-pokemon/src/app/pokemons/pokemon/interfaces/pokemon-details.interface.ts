@@ -1,23 +1,23 @@
-import { Ability } from '../../interfaces/pokemon-abilities.interface';
-import { Statistics } from '../../interfaces/pokemon-statistics.interface';
-import { Resource } from '../../interfaces/pokemon.interface';
+import { TAbility } from '../../interfaces/pokemon-abilities.interface';
+import { TStatistics } from '../../interfaces/pokemon-statistics.interface';
+import { TResource } from '../../interfaces/pokemon.interface';
 
-export interface PokemonSpecies {
-    id: number;
-    shape: Resource;
-    color: Resource;
-    evolves_from_species: Resource;
-}
+export type TPokemonSpecies = {
+  id: number;
+  shape: TResource;
+  color: TResource;
+  evolves_from_species: TResource;
+};
 
-export interface PokemonDetails {
-    id: number;
-    name: string;
-    height: number;
-    weight: number;
-    frontShiny: string;
-    color: string;
-    shape: string;
-    evolvesFromSpecies: string;
-    stats: Statistics[],
-    abilities: Ability[],
-}
+export type TPokemonDetails = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  frontShiny: string;
+  color: string;
+  shape: string;
+  evolvesFromSpecies: string;
+  stats: Array<TStatistics>;
+  abilities: Array<TAbility>;
+};

@@ -1,39 +1,38 @@
-import { Ability } from './pokemon-abilities.interface';
-import { Statistics } from './pokemon-statistics.interface';
+import { TAbility } from './pokemon-abilities.interface';
+import { TStatistics } from './pokemon-statistics.interface';
 
-export interface Resource {
-    name: string;
-    url: string;
-}
+export type TResource = {
+  name: string;
+  url: string;
+};
 
-export interface RawStats {
+export type TRawStats = {
   base_stat: number;
   effort: number;
-  stat: Resource;
-}
- 
-export interface RawAbility {
-  ability: Resource;
+  stat: TResource;
+};
+
+export type TRawAbility = {
+  ability: TResource;
   slot: number;
   is_hidden: boolean;
-}
+};
 
-export interface Pokemon {
-    id: number;
-    name: string;
-    height: number;
-    weight: number;
-    sprites: {
-      back_shiny: string;
-      front_shiny: string;
-    },
-    stats: RawStats [],
-    abilities: RawAbility[]
-}
-  
-export type DisplayPokemon = Omit<Pokemon, 'sprites' | 'stats' | 'abilities'> & {
-    frontShiny: string;
-    abilities: Ability[];
-    stats: Statistics[];
-}
+export type TPokemon = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  sprites: {
+    back_shiny: string;
+    front_shiny: string;
+  };
+  stats: Array<TRawStats>;
+  abilities: Array<TRawAbility>;
+};
 
+export type TDisplayPokemon = Omit<TPokemon, 'sprites' | 'stats' | 'abilities'> & {
+  frontShiny: string;
+  abilities: Array<TAbility>;
+  stats: Array<TStatistics>;
+};

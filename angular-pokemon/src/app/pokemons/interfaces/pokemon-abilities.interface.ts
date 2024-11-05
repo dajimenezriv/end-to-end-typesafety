@@ -1,4 +1,4 @@
-export interface Ability {
+export type TAbility = {
     name: string;
     isHidden: boolean;
 }

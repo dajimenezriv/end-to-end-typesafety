@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, inject, numberAttrib
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PokemonListService } from '../services/pokemon-list.service';
-import { PokemonDetails } from './interfaces/pokemon-details.interface';
+import { TPokemonDetails } from './interfaces/pokemon-details.interface';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
 import { PokemonPhysicalComponent } from './pokemon-physical/pokemon-physical.component';
 import { PokemonStatisticsComponent } from './pokemon-statistics/pokemon-statistics.component';
@@ -64,7 +64,7 @@ export class PokemonComponent implements OnInit {
   pokemonDetailsService = inject(PokemonDetailsService);
   pokemonListService = inject(PokemonListService);
   router = inject(Router);
-  pokemonDetails$!: Observable<PokemonDetails | undefined>;
+  pokemonDetails$!: Observable<TPokemonDetails | undefined>;
 
   ngOnInit(): void {
     this.pokemonDetails$ = this.pokemonDetailsService.getPokemonDetails(this.id, history.state?.pokemon);

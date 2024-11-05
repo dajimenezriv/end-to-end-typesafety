@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, inject, numberAttribute } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
-import { DisplayPokemon } from '../interfaces/pokemon.interface';
+import { TDisplayPokemon } from '../interfaces/pokemon.interface';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonPaginationComponent } from '../pokemon-pagination/pokemon-pagination.component';
 import { PokemonListService } from '../services/pokemon-list.service';
@@ -104,6 +104,6 @@ export class PokemonListComponent {
   currentPage = this.pokemonLisService.currentPage;
   pokemons = toSignal(
     toObservable(this.currentPage).pipe(switchMap(() => this.pokemonLisService.getPokemons())), 
-    { initialValue: [] as DisplayPokemon[] }
+    { initialValue: [] as Array<TDisplayPokemon> }
   );
 }
