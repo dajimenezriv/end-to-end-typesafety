@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Pokemon List</h2>
+  <div class="card-layout">
+    @defer {
+    @for (pokemon of pokemons(); track pokemon.id) {
+    <app-pokemon-card [pokemon]="pokemon" />
+    }
+    } @loading (minimum 500ms) {
+    <p>Loading....</p>
+    } @placeholder (minimum 300ms) {
+    <p>Placeholder of Pokemon List</p>
+    } @error {
+    <p>Failed to load dependencies</p>
+    }
+  </div>
+  <app-pokemon-pagination />
+</div>
