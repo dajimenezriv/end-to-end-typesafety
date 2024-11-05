@@ -1,5 +1,5 @@
-import { Component, Input, inject, numberAttribute } from '@angular/core';
-import { injectQuery, injectQueryClient } from '@tanstack/angular-query-experimental';
+import { Component, Input, inject, numberAttribute, signal } from '@angular/core';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonPaginationComponent } from '../pokemon-pagination/pokemon-pagination.component';
@@ -14,21 +14,20 @@ import { PokemonListService } from '../services/pokemon-list.service';
 })
 export class PokemonListComponent {
   private readonly pokemonListService = inject(PokemonListService);
-  private readonly queryClient = injectQueryClient();
 
-  page = 1;
+  private finalPage = signal(0);
 
-  @Input({ transform: (value: string) => numberAttribute(value, 1), alias: 'page' })
-  set _page(value: number) {
-    this.page = value;
-    this.currentPage.set(this.page - 1);
-    this.queryClient.invalidateQueries({ queryKey: ['pokemons', this._page] });
+  @Input({
+    transform: (value: string) => {
+      return numberAttribute(value, 1);
+    },
+  })
+  set page(value: number) {
+    this.finalPage.set(value);
   }
 
-  currentPage = this.pokemonListService.currentPage;
-
   pokemonsQuery = injectQuery(() => ({
-    queryKey: ['pokemons', this._page],
-    queryFn: () => this.pokemonListService.getPokemons(),
+    queryKey: ['pokemons', this.finalPage()],
+    queryFn: () => this.pokemonListService.getPokemons(this.finalPage()),
   }));
 }

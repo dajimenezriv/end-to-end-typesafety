@@ -2,8 +2,7 @@
   <ul>
     @for (page of pages; track page) {
     <li>
-      <a [routerLink]="['../list']" [queryParams]="{ page: page + 1 }" (click)="currentPage.set(page)"
-        routerLinkActive="active">Page {{ page + 1 }}</a>
+      <a [routerLink]="['/list']" [queryParams]="{ page: page + 1 }" routerLinkActive="active">Page {{ page + 1 }}</a>
     </li>
     }
   </ul>

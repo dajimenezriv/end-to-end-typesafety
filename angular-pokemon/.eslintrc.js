@@ -27,6 +27,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/switch-exhaustiveness-check': 'error',
         'eol-last': 'error',
+        '@angular-eslint/no-input-rename': 'off',
       },
     },
     {

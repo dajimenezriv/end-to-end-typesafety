@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 
 import { TAbility } from '../interfaces/pokemon-abilities.interface';
@@ -15,10 +15,8 @@ const PAGE_SIZE = 30;
 export class PokemonListService {
   private readonly httpClient = inject(HttpClient);
 
-  currentPage = signal(0);
-
-  getPokemons() {
-    const pokemonIds = [...Array(PAGE_SIZE).keys()].map((n) => PAGE_SIZE * this.currentPage() + (n + 1));
+  getPokemons(page: number) {
+    const pokemonIds = [...Array(PAGE_SIZE).keys()].map((n) => PAGE_SIZE * page + (n + 1));
     return Promise.all(pokemonIds.map((id) => this.get(id)));
   }
 

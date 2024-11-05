@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, numberAttribute } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-import { PokemonListService } from '../services/pokemon-list.service';
 
 @Component({
   selector: 'app-pokemon-pagination',
@@ -13,5 +11,5 @@ import { PokemonListService } from '../services/pokemon-list.service';
 })
 export class PokemonPaginationComponent {
   pages = [...Array(10).keys()];
-  currentPage = inject(PokemonListService).currentPage;
+  @Input({ transform: (value: string) => numberAttribute(value, 1) }) currentPage!: number;
 }
