@@ -3,7 +3,6 @@ import { TStatistics } from './pokemon-statistics.interface';
 
 export type TResource = {
   name: string;
-  url: string;
 };
 
 export type TRawStats = {

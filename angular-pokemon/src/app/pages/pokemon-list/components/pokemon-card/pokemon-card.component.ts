@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { TDisplayPokemon } from '../../../../pokemons/interfaces/pokemon.interface';
+import { TDisplayPokemon } from '../../services/pokemon-list.service';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -12,6 +12,5 @@ import { TDisplayPokemon } from '../../../../pokemons/interfaces/pokemon.interfa
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonCardComponent {
-  @Input({ required: true })
-  pokemon!: TDisplayPokemon;
+  @Input({ required: true }) pokemon!: TDisplayPokemon;
 }

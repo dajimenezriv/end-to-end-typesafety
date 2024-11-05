@@ -1,11 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
-
-import { TAbility } from '../../../pokemons/interfaces/pokemon-abilities.interface';
-import { TStatistics } from '../../../pokemons/interfaces/pokemon-statistics.interface';
-import { TDisplayPokemon, TPokemon } from '../../../pokemons/interfaces/pokemon.interface';
-import { transformSpecialPowers } from '../../../pokemons/utilities/transform-special-powers.util';
+import { z } from 'zod';
 
 const PAGE_SIZE = 30;
 
@@ -20,25 +16,35 @@ export class PokemonListService {
     return Promise.all(pokemonIds.map((id) => this.get(id)));
   }
 
-  private pokemonTransformer(pokemon: TPokemon): TDisplayPokemon {
-    const { id, name, height, weight, sprites, abilities: a, stats: statistics } = pokemon;
-
-    const { abilities, stats }: { abilities: Array<TAbility>; stats: Array<TStatistics> } = transformSpecialPowers(a, statistics);
-
-    return {
-      id,
-      name,
-      height,
-      weight,
-      abilities,
-      stats,
-      frontShiny: sprites.front_shiny,
-    };
-  }
-
   private get(id: number) {
     return lastValueFrom(
-      this.httpClient.get<TPokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`).pipe(map((pokemon) => this.pokemonTransformer(pokemon))),
+      this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${id}`).pipe(map((response) => ResponseZod.parse(response))),
     );
   }
 }
+
+export type TDisplayPokemon = z.infer<typeof ResponseZod>;
+const ResponseZod = z.object({
+  id: z.coerce.number(),
+  name: z.string(),
+  height: z.coerce.number(),
+  weight: z.coerce.number(),
+  sprites: z.object({
+    back_shiny: z.string(),
+    front_shiny: z.string(),
+  }),
+  abilities: z.array(
+    z.object({
+      slot: z.coerce.number(),
+      is_hidden: z.coerce.boolean(),
+      ability: z.object({ name: z.string() }),
+    }),
+  ),
+  stats: z.array(
+    z.object({
+      base_stat: z.coerce.number(),
+      effort: z.coerce.number(),
+      stat: z.object({ name: z.string() }),
+    }),
+  ),
+});
