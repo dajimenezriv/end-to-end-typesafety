@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 
-import { PokemonListComponent } from './pages/pokemon-list/components/pokemon-list/pokemon-list.component';
+import { WrapperComponent } from './pages/pokemon-list/components/wrapper/wrapper.component';
 import { PokemonComponent } from './pokemons/pokemon/pokemon.component';
 
 export const routes: Routes = [
   {
     path: 'list',
-    component: PokemonListComponent,
+    component: WrapperComponent,
     title: 'Pokemon List',
   },
   {

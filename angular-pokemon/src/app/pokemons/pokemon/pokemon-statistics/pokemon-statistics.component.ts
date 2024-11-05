@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { TStatistics } from '../../interfaces/pokemon-statistics.interface';
 
@@ -7,7 +7,6 @@ import { TStatistics } from '../../interfaces/pokemon-statistics.interface';
   standalone: true,
   templateUrl: './pokemon-statistics.component.html',
   styleUrl: './pokemon-statistics.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonStatisticsComponent {
   @Input({ required: true })

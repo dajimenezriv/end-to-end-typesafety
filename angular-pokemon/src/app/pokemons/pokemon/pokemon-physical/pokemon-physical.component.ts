@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { TPokemonDetails } from '../interfaces/pokemon-details.interface';
 import { PokemonAffliationComponent } from '../pokemon-affiliation/pokemon-affiliation.component';
@@ -11,7 +11,6 @@ import { PokemonAffiliation } from '../pokemon-affiliation/types/affiliation.typ
   imports: [TitleCasePipe, PokemonAffliationComponent],
   templateUrl: './pokemon-physical.component.html',
   styleUrl: './pokemon-physical.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonPhysicalComponent implements OnInit {
   @Input({ required: true })

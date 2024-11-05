@@ -1,27 +1,14 @@
-import { Component, Input, inject, numberAttribute, signal } from '@angular/core';
-import { injectQuery } from '@tanstack/angular-query-experimental';
+import { Component, Input, numberAttribute } from '@angular/core';
+
+import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
+import { PokemonPaginationComponent } from '../pokemon-pagination/pokemon-pagination.component';
 
 @Component({
   selector: 'app-wrapper',
   standalone: true,
   templateUrl: './wrapper.component.html',
+  imports: [PokemonListComponent, PokemonPaginationComponent],
 })
 export class WrapperComponent {
-  private readonly pokemonListService = inject(PokemonListService);
-
-  private finalPage = signal(0);
-
-  @Input({
-    transform: (value: string) => {
-      return numberAttribute(value, 1);
-    },
-  })
-  set page(value: number) {
-    this.finalPage.set(value);
-  }
-
-  pokemonsQuery = injectQuery(() => ({
-    queryKey: ['pokemons', this.finalPage()],
-    queryFn: () => this.pokemonListService.getPokemons(this.finalPage()),
-  }));
+  @Input({ transform: (value: string) => numberAttribute(value, 1) }) page!: number;
 }

@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { AffiliationPipe } from './pipes/affiliation.pipe';
 import { PokemonAffiliation } from './types/affiliation.type';
@@ -10,7 +10,6 @@ import { PokemonAffiliation } from './types/affiliation.type';
   imports: [TitleCasePipe, AffiliationPipe],
   templateUrl: './pokemon-affiliation.component.html',
   styleUrl: './pokemon-affiliation.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonAffliationComponent {
   @Input({ required: true })

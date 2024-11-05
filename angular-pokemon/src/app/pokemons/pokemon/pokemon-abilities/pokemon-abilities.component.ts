@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { TAbility } from '../../interfaces/pokemon-abilities.interface';
 
@@ -7,7 +7,6 @@ import { TAbility } from '../../interfaces/pokemon-abilities.interface';
   standalone: true,
   templateUrl: './pokemon-abilities.component.html',
   styleUrl: './pokemon-abilities.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonAbilitiesComponent {
   @Input({ required: true })
