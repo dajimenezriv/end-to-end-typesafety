@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
 
-import { TAbility } from '../interfaces/pokemon-abilities.interface';
-import { TStatistics } from '../interfaces/pokemon-statistics.interface';
-import { TDisplayPokemon, TPokemon } from '../interfaces/pokemon.interface';
-import { transformSpecialPowers } from '../utilities/transform-special-powers.util';
+import { TAbility } from '../../../pokemons/interfaces/pokemon-abilities.interface';
+import { TStatistics } from '../../../pokemons/interfaces/pokemon-statistics.interface';
+import { TDisplayPokemon, TPokemon } from '../../../pokemons/interfaces/pokemon.interface';
+import { transformSpecialPowers } from '../../../pokemons/utilities/transform-special-powers.util';
 
 const PAGE_SIZE = 30;
 

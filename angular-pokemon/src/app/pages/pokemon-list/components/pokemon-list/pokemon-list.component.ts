@@ -1,9 +1,9 @@
 import { Component, Input, inject, numberAttribute, signal } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 
+import { PokemonListService } from '../../services/pokemon-list.service';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonPaginationComponent } from '../pokemon-pagination/pokemon-pagination.component';
-import { PokemonListService } from '../services/pokemon-list.service';
 
 @Component({
   selector: 'app-pokemon-list',
