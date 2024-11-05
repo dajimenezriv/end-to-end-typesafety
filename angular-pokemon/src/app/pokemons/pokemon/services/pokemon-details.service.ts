@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { EMPTY, Observable, catchError, iif, map, of, retry, switchMap } from 'rxjs';
+import { iif, lastValueFrom, map, of, switchMap } from 'rxjs';
 
 import { TAbility } from '../../interfaces/pokemon-abilities.interface';
 import { TStatistics } from '../../interfaces/pokemon-statistics.interface';
@@ -52,22 +52,19 @@ export class PokemonDetailsService {
     };
   }
 
-  getPokemonDetails(id: number, displayPokemon: TDisplayPokemon | undefined): Observable<TPokemonDetails> {
+  getPokemonDetails(id: number, displayPokemon: TDisplayPokemon | undefined) {
     const getPokemon$ = iif(
       () => !displayPokemon,
       this.httpClient.get<TPokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`),
       of(displayPokemon as TDisplayPokemon),
     );
 
-    return getPokemon$.pipe(
-      switchMap((pokemon) =>
-        this.httpClient.get<TPokemonSpecies>(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`).pipe(
-          map((species) => this.pokemonDetailsTransformer(pokemon, species)),
-          retry(3),
-          catchError((err) => {
-            console.error(err);
-            return EMPTY;
-          }),
+    return lastValueFrom(
+      getPokemon$.pipe(
+        switchMap((pokemon) =>
+          this.httpClient
+            .get<TPokemonSpecies>(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`)
+            .pipe(map((species) => this.pokemonDetailsTransformer(pokemon, species))),
         ),
       ),
     );

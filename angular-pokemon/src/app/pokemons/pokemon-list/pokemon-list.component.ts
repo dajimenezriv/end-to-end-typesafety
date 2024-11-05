@@ -27,7 +27,7 @@ export class PokemonListComponent {
 
   currentPage = this.pokemonListService.currentPage;
 
-  pokemonQuery = injectQuery(() => ({
+  pokemonsQuery = injectQuery(() => ({
     queryKey: ['pokemons', this._page],
     queryFn: () => this.pokemonListService.getPokemons(),
   }));
