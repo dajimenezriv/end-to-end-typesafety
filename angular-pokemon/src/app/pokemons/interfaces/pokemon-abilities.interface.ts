@@ -1,4 +1,4 @@
 export type TAbility = {
-    name: string;
-    isHidden: boolean;
-}
+  name: string;
+  isHidden: boolean;
+};

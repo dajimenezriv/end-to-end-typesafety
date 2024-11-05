@@ -2,6 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit, inject, numberAttribute } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { PokemonListService } from '../services/pokemon-list.service';
 import { TPokemonDetails } from './interfaces/pokemon-details.interface';
 import { PokemonAbilitiesComponent } from './pokemon-abilities/pokemon-abilities.component';
@@ -33,28 +34,30 @@ import { PokemonDetailsService } from './services/pokemon-details.service';
       <button (click)="backToPage()">Go back</button>
     </div>
   `,
-  styles: [`
-    .content {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-    }
+  styles: [
+    `
+      .content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
 
-    .button-bar {
-      padding: 1rem;
-    }
+      .button-bar {
+        padding: 1rem;
+      }
 
-    button {
-      padding: 0.25rem;
-      border-radius: 4px;
-    }
+      button {
+        padding: 0.25rem;
+        border-radius: 4px;
+      }
 
-    app-pokemon-statistics,
-    app-pokemon-physical,
-    app-pokemon-abilities {
-      margin-bottom: 0.5rem;
-    }
-  `],
+      app-pokemon-statistics,
+      app-pokemon-physical,
+      app-pokemon-abilities {
+        margin-bottom: 0.5rem;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokemonComponent implements OnInit {
@@ -73,6 +76,6 @@ export class PokemonComponent implements OnInit {
   backToPage() {
     const page = this.pokemonListService.getPage(this.id);
     this.pokemonListService.currentPage.set(page - 1);
-    this.router.navigate(['/list'], { queryParams: { page }});
+    this.router.navigate(['/list'], { queryParams: { page } });
   }
 }
