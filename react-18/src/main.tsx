@@ -5,6 +5,8 @@ import { FormComponent } from './pages/form/ui/form';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <FormComponent />
+    <div className="p-4 bg-zinc-100 w-screen h-screen">
+      <FormComponent />
+    </div>
   </StrictMode>,
 );
