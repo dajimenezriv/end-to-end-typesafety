@@ -1,47 +1,50 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <CustomNavbar
+    :pages="pages"
+    :activePage="activePage"
+    :navLinkClick="(index: number) => (activePage = index)"
+  />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <PageViewer v-if="pages.length > 0" :page="pages[activePage]" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script lang="ts">
+import CustomNavbar from './components/CustomNavbar.vue'
+import PageViewer from './components/PageViewer.vue'
+
+export default {
+  components: {
+    PageViewer,
+    CustomNavbar,
+  },
+  data() {
+    return {
+      activePage: 0,
+      pages: [
+        {
+          title: 'Page 1',
+          content: 'Page 1 content',
+        },
+        {
+          title: 'Page 2',
+          content: 'Page 2 content',
+        },
+        {
+          title: 'Page 3',
+          content: 'Page 3 content',
+        },
+      ],
+    }
+  },
+  created() {
+    this.getPages()
+  },
+  methods: {
+    async getPages() {
+      const res = await fetch('pages.json')
+      const data = await res.json()
+      this.pages = data
+    },
+  },
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</script>

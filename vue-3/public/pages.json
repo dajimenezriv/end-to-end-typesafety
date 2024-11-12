@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Page 1",
+    "content": "Readed from pages.json"
+  },
+  {
+    "title": "Page 2",
+    "content": "Page 2 content"
+  },
+  {
+    "title": "Page 3",
+    "content": "Page 3 content"
+  }
+]
