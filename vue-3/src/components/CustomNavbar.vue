@@ -3,13 +3,14 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">My Vue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li v-for="(page, index) in pages" class="nav-item" :key="index">
-          <NavbarLink
-            :page="page"
-            :isActive="index === activePage"
-            @click.prevent="navLinkClick(index)"
-          />
-        </li>
+        <NavbarLink
+          v-for="(page, index) in pages"
+          class="nav-item"
+          :key="index"
+          :index="index"
+          :page="page"
+          :isActive="index === activePage"
+        />
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme">Toggle</button>
@@ -25,19 +26,26 @@ export default {
   components: {
     NavbarLink,
   },
-  props: ['pages', 'activePage', 'navLinkClick'],
+  props: ['pages', 'activePage'],
   data: () => {
     return {
       theme: 'light',
     }
   },
+  created() {
+    this.restoreThemeSettings()
+  },
   methods: {
     changeTheme() {
-      if (this.theme === 'light') {
-        this.theme = 'dark'
-      } else {
-        this.theme = 'light'
-      }
+      if (this.theme === 'light') this.theme = 'dark'
+      else this.theme = 'light'
+      this.storeThemeSettings()
+    },
+    storeThemeSettings() {
+      localStorage.setItem('theme', this.theme)
+    },
+    restoreThemeSettings() {
+      this.theme = localStorage.getItem('theme') || 'light'
     },
   },
 }
