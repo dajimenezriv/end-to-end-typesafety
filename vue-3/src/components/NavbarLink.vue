@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { NAVBAR_ACTIVED } from '@/utils/Events'
+import { EMITTER } from '@/utils/Events'
 
 export default {
   props: ['index', 'page', 'isActive'],
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     activeLink() {
-      this.$bus.$emit(NAVBAR_ACTIVED, this.index)
+      EMITTER.emit('navbarActived', this.index)
     },
   },
 }

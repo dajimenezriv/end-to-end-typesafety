@@ -1,22 +1,20 @@
 <template>
   <CustomNavbar :pages="pages" :activePage="activePage" />
 
-  <PageViewer v-if="pages.length > 0" :page="pages[activePage]" />
+  <RouterView />
 
-  <CreatePage @pageCreated="pageCreated" />
+  <!-- <PageViewer v-if="pages.length > 0" :page="pages[activePage]" />
+
+  <CreatePage @pageCreated="pageCreated" /> -->
 </template>
 
 <script lang="ts">
 import CustomNavbar from './components/CustomNavbar.vue'
-import PageViewer from './components/PageViewer.vue'
-import CreatePage from './components/CreatePage.vue'
-import { NAVBAR_ACTIVED } from './utils/Events'
+import { EMITTER } from './utils/Events'
 
 export default {
   components: {
-    PageViewer,
     CustomNavbar,
-    CreatePage,
   },
   data() {
     return {
@@ -40,7 +38,7 @@ export default {
   created() {
     this.getPages()
 
-    this.$bus.$on(NAVBAR_ACTIVED, (index: number) => {
+    EMITTER.on('navbarActived', (index: number) => {
       this.activePage = index
     })
   },

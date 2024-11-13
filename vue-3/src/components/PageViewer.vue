@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <h1>{{ page.title }}</h1>
-    <p>{{ page.content }}</p>
+    <!-- <h1>{{ page.title }}</h1>
+    <p>{{ page.content }}</p> -->
+    <h1>Hey</h1>
   </div>
 </template>
 
@@ -18,6 +19,10 @@ export default {
         }
       },
     },
+  },
+  created() {
+    const params = this.$route.params
+    console.log(params)
   },
 }
 </script>

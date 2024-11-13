@@ -3,10 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import $bus from './utils/Events'
+import { router } from './routes'
+import { createPinia } from 'pinia'
+import piniaPersistedState from 'pinia-plugin-persistedstate'
 
+const pinia = createPinia()
 const app = createApp(App)
 
-app.config.globalProperties.$bus = $bus
+pinia.use(piniaPersistedState)
+
+app.use(router)
+app.use(pinia)
 
 app.mount('#app')

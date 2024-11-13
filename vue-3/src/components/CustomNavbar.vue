@@ -13,40 +13,36 @@
         />
       </ul>
       <form class="d-flex">
-        <button class="btn btn-primary" @click.prevent="changeTheme">Toggle</button>
+        <button class="btn btn-primary" @click.prevent="store.toggleTheme()">Toggle</button>
       </form>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
+import type { TPage } from '@/page.entity'
 import NavbarLink from './NavbarLink.vue'
+import { useStore } from '@/store'
+import { computed, type PropType } from 'vue'
 
 export default {
   components: {
     NavbarLink,
   },
-  props: ['pages', 'activePage'],
-  data: () => {
-    return {
-      theme: 'light',
-    }
+  props: {
+    pages: {
+      type: Array as PropType<Array<TPage>>,
+      required: true,
+    },
+    activePage: {
+      type: Number,
+      required: true,
+    },
   },
-  created() {
-    this.restoreThemeSettings()
-  },
-  methods: {
-    changeTheme() {
-      if (this.theme === 'light') this.theme = 'dark'
-      else this.theme = 'light'
-      this.storeThemeSettings()
-    },
-    storeThemeSettings() {
-      localStorage.setItem('theme', this.theme)
-    },
-    restoreThemeSettings() {
-      this.theme = localStorage.getItem('theme') || 'light'
-    },
+  setup() {
+    const store = useStore()
+    const theme = computed(() => store.theme)
+    return { store, theme }
   },
 }
 </script>
