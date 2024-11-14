@@ -1,9 +1,0 @@
-<div class="card-layout">
-  @if (pokemonsQuery.isLoading()) {<p>Loading...</p>}
-  @if (pokemonsQuery.isError()) {<p>Failed to load dependencies</p>}
-  @if (pokemonsQuery.data()) {
-  @for (pokemon of pokemonsQuery.data(); track pokemon.id) {
-  <app-pokemon-card [pokemon]="pokemon" />
-  }
-  }
-</div>
