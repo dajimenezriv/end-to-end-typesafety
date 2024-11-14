@@ -13,7 +13,7 @@
         />
 
         <li>
-          <RouterLink to="/create" class="nav-link">Create Page</RouterLink>
+          <RouterLink to="/pages/create" class="nav-link">Create Page</RouterLink>
         </li>
       </ul>
       <form class="d-flex">
