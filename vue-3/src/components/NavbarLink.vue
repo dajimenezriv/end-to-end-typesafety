@@ -1,12 +1,13 @@
 <template>
   <li>
-    <a
+    <RouterLink
+      :to="`/${index}`"
       class="nav-link"
       aria-current="page"
       :class="activeClasses"
       :title="`This link goes to ${page.title}`"
       @click.prevent="activeLink"
-      >{{ page.title }}</a
+      >{{ page.title }}</RouterLink
     >
   </li>
 </template>
@@ -15,8 +16,12 @@
 import type { TPage } from '@/page.entity'
 import { EMITTER } from '@/utils/events'
 import type { PropType } from 'vue'
+import { RouterLink } from 'vue-router'
 
 export default {
+  components: {
+    RouterLink,
+  },
   props: {
     index: {
       type: Number,

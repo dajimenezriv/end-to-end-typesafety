@@ -1,28 +1,34 @@
 <template>
   <div class="container">
-    <!-- <h1>{{ page.title }}</h1>
-    <p>{{ page.content }}</p> -->
-    <h1>Hey</h1>
+    <h1>{{ page?.title }}</h1>
+    <p>{{ page?.content }}</p>
   </div>
 </template>
 
 <script lang="ts">
+import type { TPage } from '@/page.entity'
+import { useStore } from '@/store'
+import { computed } from 'vue'
+import z from 'zod'
+
+const PARAMS = z.object({ index: z.coerce.number() })
+
 export default {
-  props: {
-    page: {
-      type: Object,
-      required: true,
-      default() {
-        return {
-          title: 'Default title',
-          content: 'Default content',
-        }
-      },
-    },
+  setup() {
+    const store = useStore()
+    const pages = computed(() => store.pages)
+    return { store, pages }
   },
-  created() {
+  async created() {
     const params = this.$route.params
-    console.log(params)
+    const parsedParams = await PARAMS.safeParseAsync(params)
+    const index = parsedParams.data?.index ?? 0
+    this.page = this.pages[index]
+  },
+  data() {
+    return {
+      page: null as TPage | null,
+    }
   },
 }
 </script>
