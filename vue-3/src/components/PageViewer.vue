@@ -26,6 +26,7 @@ export default {
     return { store, pages }
   },
   created() {
+    this.loadPage(this.index)
     // this.$watch(
     //   () => this.$route.params,
     //   async (params) => {
@@ -42,6 +43,11 @@ export default {
   },
   watch: {
     index(index: string | string[]) {
+      this.loadPage(index)
+    },
+  },
+  methods: {
+    loadPage(index: string | string[]) {
       const parsedIndex = z.coerce.number().safeParse(index)
       this.page = this.pages[parsedIndex.data ?? 0]
     },

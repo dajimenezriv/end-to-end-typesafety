@@ -4,6 +4,7 @@
       :to="`/${index}`"
       class="nav-link"
       :class="activeClasses"
+      active-class="emphasize"
       :title="`This link goes to ${page.title}`"
       @click.prevent="activeLink"
       >{{ page.title }}</RouterLink
@@ -39,7 +40,6 @@ export default {
     activeClasses() {
       return {
         active: this.isActive,
-        emphasize: this.isActive,
       }
     },
   },
