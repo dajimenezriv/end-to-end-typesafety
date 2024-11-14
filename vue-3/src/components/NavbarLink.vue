@@ -12,10 +12,25 @@
 </template>
 
 <script lang="ts">
-import { EMITTER } from '@/utils/Events'
+import type { TPage } from '@/page.entity'
+import { EMITTER } from '@/utils/events'
+import type { PropType } from 'vue'
 
 export default {
-  props: ['index', 'page', 'isActive'],
+  props: {
+    index: {
+      type: Number,
+      required: true,
+    },
+    page: {
+      type: Object as PropType<TPage>,
+      required: true,
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+    },
+  },
   computed: {
     activeClasses() {
       return {

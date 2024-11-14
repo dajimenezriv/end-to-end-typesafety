@@ -19,10 +19,14 @@
 </template>
 
 <script lang="ts">
+import type { TPage } from '@/page.entity'
+import type { PropType } from 'vue'
+
 export default {
-  emits: {
-    pageCreated(page: { title: string; content: string }) {
-      return true
+  props: {
+    pageCreated: {
+      type: Function as PropType<(page: TPage) => void>,
+      required: true,
     },
   },
   computed: {
@@ -43,7 +47,7 @@ export default {
         return
       }
 
-      this.$emit('pageCreated', { title: this.title, content: this.content })
+      this.pageCreated({ title: this.title, content: this.content })
       this.clearForm()
     },
     clearForm() {
@@ -53,9 +57,7 @@ export default {
   },
   watch: {
     title(newTitle: string, oldTile: string) {
-      if (this.content === oldTile) {
-        this.content = newTitle
-      }
+      if (this.content === oldTile) this.content = newTitle
     },
   },
 }
