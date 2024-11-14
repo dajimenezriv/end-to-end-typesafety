@@ -19,11 +19,15 @@ export default {
     const pages = computed(() => store.pages)
     return { store, pages }
   },
-  async created() {
-    const params = this.$route.params
-    const parsedParams = await PARAMS.safeParseAsync(params)
-    const index = parsedParams.data?.index ?? 0
-    this.page = this.pages[index]
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      async (params) => {
+        const parsedParams = await PARAMS.safeParseAsync(params)
+        const index = parsedParams.data?.index ?? 0
+        this.page = this.pages[index]
+      },
+    )
   },
   data() {
     return {

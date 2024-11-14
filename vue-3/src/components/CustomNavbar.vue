@@ -11,6 +11,10 @@
           :page="page"
           :isActive="index === activePage"
         />
+
+        <li>
+          <RouterLink to="/create" class="nav-link">Create Page</RouterLink>
+        </li>
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="store.toggleTheme()">Toggle</button>
@@ -24,10 +28,12 @@ import type { TPage } from '@/page.entity'
 import NavbarLink from './NavbarLink.vue'
 import { useStore } from '@/store'
 import { computed, type PropType } from 'vue'
+import { RouterLink } from 'vue-router'
 
 export default {
   components: {
     NavbarLink,
+    RouterLink,
   },
   props: {
     pages: {

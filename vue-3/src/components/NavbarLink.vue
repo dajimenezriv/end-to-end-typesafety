@@ -3,7 +3,6 @@
     <RouterLink
       :to="`/${index}`"
       class="nav-link"
-      aria-current="page"
       :class="activeClasses"
       :title="`This link goes to ${page.title}`"
       @click.prevent="activeLink"
