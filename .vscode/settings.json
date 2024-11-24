@@ -2,6 +2,7 @@
   "codeium.enableCodeLens": false,
   "editor.codeLens": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.guides.indentation": false,
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
@@ -12,11 +13,25 @@
   "files.eol": "\n",
   "files.exclude": {
     "**/.angular": true,
-    "**/node_modules": true
+    "**/node_modules": true,
+    "angular-18": true,
+    "angular-18-tutorial": false,
+    "cache": true,
+    "leetcode": true,
+    "react-18": true,
+    "trpc": true,
+    "vue-3": true
   },
   "search.exclude": {
     "**/dist": true,
-    "**/package-lock.json": true
+    "**/package-lock.json": true,
+    "angular-18-tutorial/**": false,
+    "angular-18/**": true,
+    "cache/**": true,
+    "leetcode/**": true,
+    "react-18/**": true,
+    "trpc/**": true,
+    "vue-3/**": true
   },
   "typescript.referencesCodeLens.enabled": true,
   "workbench.editor.enablePreview": true // Unpin diff files (WorkingTree)
